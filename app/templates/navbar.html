@@ -1,0 +1,9 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sidebarNavigation" data-sidebarClass="navbar-dark bg-dark">
+       <a class="navbar-brand" href="{% url 'home' %}">
+        Resume Finder
+       </a>
+       <form  method="GET" action="{% url 'home' %}" >
+            <input name="q" placeholder="Enter the skill to find relevant resume..." />
+            <input type="submit">
+        </form>
+</nav>
