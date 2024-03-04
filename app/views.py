@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 # Create your views here.
 from django.shortcuts import render, redirect
 from pyresparser import ResumeParser
@@ -14,10 +16,8 @@ from django.db.models import Q
 def home(request):
     
     q = request.GET.get('q') if request.GET.get('q') != None else ''
-
-# skills_iregex is used to find patterns based on search 
-#  we cana use icontains as well 
     resumes = Resume.objects.filter(skills__iregex=q)
+
 
 
     if request.method == 'POST':
@@ -69,14 +69,3 @@ def home(request):
         form = UploadResumeModelForm()
     return render(request, 'base.html', {'form': form,'resumes':resumes})
 
-
-
-# def home(request):
-#     if request.method=="GET":
-#         q = request.GET.get('q') if request.GET.get('q') != None else ''
-#         q = request.GET.get('q') 
-#         print(q)
-
-#         resumes = Resume.objects.filter(skills__iregex=q)
-#         print(resumes)
-#     return render(request, "base.html", {'resumes':resumes})
